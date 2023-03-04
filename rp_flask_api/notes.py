@@ -12,6 +12,9 @@ def read_one(note_id):
     else:
         abort(404, f"Note with ID {note_id} not found")
 
+def read_all():
+    notes = Notes.query.all()
+    return note_schema.dump(notes)
 
 def update(note_id, note):
     existing_note = Note.query.get(note_id)
